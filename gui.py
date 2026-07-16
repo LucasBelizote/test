@@ -9,7 +9,7 @@ class InterfaceGraficaLogistica:
         self.root.geometry("1000x650")
         self.root.configure(bg="#f3f4f6")
         
-        # Instancia a lógica de negócios
+        
         self.core = SistemaLogisticaCore()
         
         self.container = tk.Frame(self.root, bg="#f3f4f6")
@@ -88,7 +88,7 @@ class InterfaceGraficaLogistica:
     def tela_kanban(self):
         self.limpar_tela()
         
-        # Cabeçalho Superior
+        
         header = tk.Frame(self.container, bg="#1e3d59", pady=10)
         header.pack(fill=tk.X)
         
@@ -103,7 +103,7 @@ class InterfaceGraficaLogistica:
         tk.Button(header, text="Logoff", bg="#ef4444", fg="white", font=("Arial", 9, "bold"), command=logout, bd=0, cursor="hand2", padx=10, pady=3).pack(side=tk.RIGHT, padx=15)
         tk.Button(header, text="➕ Adicionar Rota", bg="#10b981", fg="white", font=("Arial", 9, "bold"), command=self.janela_nova_tarefa, bd=0, cursor="hand2", padx=10, pady=3).pack(side=tk.RIGHT, padx=5)
 
-        # Quadro de Trabalho (Kanban)
+        
         board = tk.Frame(self.container, bg="#f3f4f6")
         board.pack(fill=tk.BOTH, expand=True, padx=15, pady=15)
         
@@ -126,14 +126,14 @@ class InterfaceGraficaLogistica:
             listbox.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
             self.listboxes[status] = listbox
             
-            # Adiciona as tarefas correspondentes na coluna
+           
             tarefas_status = [t for t in tarefas if t['status'] == status]
             for t in tarefas_status:
                 icon_prio = {'alta': '🔴', 'media': '🟡', 'baixa': '🟢'}.get(t['prioridade'], '⚪')
-                # Exibe ID, Prioridade, Título e Motorista (Mudança de escopo visível!)
+                
                 listbox.insert(tk.END, f"ID: {t['id']} | {icon_prio} {t['titulo']} ({t['motorista']})")
 
-        # Painel de Controle Inferior
+        
         controles = tk.Frame(self.container, bg="white", pady=12, highlightthickness=1, highlightbackground="#e5e7eb")
         controles.pack(fill=tk.X)
         
